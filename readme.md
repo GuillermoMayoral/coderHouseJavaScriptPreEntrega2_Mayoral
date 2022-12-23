@@ -127,3 +127,48 @@ return metrosCuad;
 function mostrarResultado (result){
 alert("El valor calculado es: "+ result);
 }
+
+> > temas projecto pre entrega 2 clase 5 a 7
+
+-----------------------------objeto
+
+const objeto={
+objetito:caracteristica
+objetito:caracteristica
+objetito:caracteristica
+}
+
+-----------------------------array
+
+const NAME = ['objet1','objet2','objet3'];
+
+-----------------------------push
+agrega uno o mas elementos al inicio del array
+familiaSimpso.unshift('paty','barney')
+
+-----------------------------funcion orden superior
+
+function sumarNumerosEntre(inicio, fin){
+let total = 0;
+for (let i = inicio; i <= fin; i++) {
+total += i;
+
+    }
+
+    return total;
+
+}
+
+function sumar (numA,numB){
+return numA+numB;
+}
+
+console.log(sumarNumerosEntre(sumar(20,80),1000)); ->function que recibe una function
+
+-----------------------------date en la nota
+
+-----Clase date para manejo de fechas
+let fechaActual = new Date();
+
+-----------------------------extras
+toUpperCase = todo el string en mayusculas

@@ -1,4 +1,4 @@
-let alto;
+let largo;
 let ancho;
 
 let area;
@@ -8,67 +8,94 @@ let costo;
 let total;
 
 
-alert("Bienvenido a tu creador de cajas favorito!");
+alert("Bienvenido a Bases Mayoral \nLas Mejores Bases para tu Cama!");
 
 let name1 = prompt("Cual es tu nombre? ");
 
-let box = prompt("Muy bien " + name1 + ", que tamaño de caja buscabas? -grande -mediana -chica");
+let box = prompt("Muy bien " + name1 + ", que tamaño de Base buscabas?\n-Queen.\n-Matrimonial.\n-Individual.");
 
-
-switch(box){
-case "grande":
-    alto = 50;
-    ancho = 40;
-    costo = 100;
+switch(box.toLowerCase()){
+case "queen":
+    largo = 190;
+    ancho = 150;
+    costo = 1100;
 break;
-case "mediana":
-    alto = 40;
-    ancho = 30;
-    costo = 80;
+case "matrimonial":
+    largo = 190;
+    ancho = 135;
+    costo = 1000;
 break;
-case "chica":
-    alto = 30;
-    ancho = 20;
-    costo = 60;
+case "individual":
+    largo = 190;
+    ancho = 100;
+    costo = 950;
 break;
 default:
     alert("no encontramos: '" + box + "' solo tenemos tamaños -grande -mediana -chica");
 }
 
 
-let tamaño = prompt("Muy bien la caja " + box + " tine una medida de: " + alto + "cm de alto y " + ancho + "cm de ancho, quieres saber algo mas? -area - perimetro -ambas -nada");
+let tamaño = prompt("Muy bien la Base " + box + " tine una medida de: " + largo + "cm de largo y " + ancho + "cm de ancho, quieres saber algo mas? -area - perimetro -ambas -nada");
 
-if(tamaño=="area"){
-    area = alto * ancho;
-    alert("La area de su caja es de " + area + "cm².");
-}else if(tamaño=="perimetro"){
-    perimetro = alto*2 + ancho*2;
-    alert("El perimetro de su caja es de " + perimetro + "cm.");
-}else if(tamaño=="ambas"){
-    area = alto * ancho;
-    perimetro = alto*2 + ancho*2;
-    alert("La area de su caja es de " + area + "cm² y el perimetro de su caja es de " + perimetro + "cm.");
+if(tamaño.toLowerCase()=="area"){
+    area = largo * ancho;
+    alert("La area de su Base es de " + area + "cm².");
+}else if(tamaño.toLowerCase()=="perimetro"){
+    perimetro = largo*2 + ancho*2;
+    alert("El perimetro de su Base es de " + perimetro + "cm.");
+}else if(tamaño.toLowerCase()=="ambas"){
+    area = largo * ancho;
+    perimetro = largo*2 + ancho*2;
+    alert("La area de su Base es de " + area + "cm² y el perimetro de su Base es de " + perimetro + "cm.");
 }else{
     alert("Entendido!!!");
 }
 
-let num = parseInt(prompt("La caja " + box + " que usted escogio, cuesta $" + costo + " cuantas cajas va querer?"))
+let num = parseInt(prompt("La Base " + box + " que usted escogio, cuesta $" + costo + " cuantas Bases va querer?"))
 
-function calcularTotal(precio, cantidad){
-    total = precio * cantidad;
+let promoBases;
+
+if(num < 3){
+    promoBases = 0;
+} else if(num < 6){
+    promoBases = .10;
+} else {
+    promoBases = .20;
 }
 
-calcularTotal(costo,num);
+console.log(promoBases)
 
-alert("Imprimiendo nota... en console")
+function descuentoAplicado (bruto, descuento){
+    let desc = bruto * descuento;
+    return bruto - desc 
+}
 
-console.log("nombre: " + name1);
-console.log("tamaño: " + box);
-console.log("medidas- alto:" + alto + "cm. ancho:" + ancho + "cm");
-console.log("Su pedido es:");
+const carritoBases = []
 
 for(let i = 1; i <= num; i++){
-    console.log("1 caja - serie: " + 000 + i)
+    carritoBases.push('1 Base ' + box + " - serie: " + 000 + i)
 }
 
-console.log("total: $" + total);
+function calcularTotal(precio, cantidad){
+    return precio * cantidad;
+    
+}
+
+alert("Imprimiendo nota... ")
+
+const datosNota = {
+    factura:1,
+    fecha: new Date(),
+    nombre:name1,
+    tamaño:box,
+    cantidad:num,
+    total:calcularTotal(costo,num),
+}
+
+console.log(datosNota)
+
+function notaBases (bruto, descuento) {
+    alert("nombre: " + name1 + "\nFecha " + new Date()+ "\ntamaño: " + box + "\nmedidas- largo:" + largo + "cm. ancho:" + ancho + "cm" + "\nSu pedido es:" + carritoBases + "\nTOTAL bruto: " + bruto + "\nTOTAL CON DESCUENTO: " + descuento)
+}
+
+notaBases(calcularTotal(costo,num),descuentoAplicado(calcularTotal(costo,num),promoBases))
